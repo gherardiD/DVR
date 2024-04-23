@@ -1,0 +1,16 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+label {
+    font-weight: bold;
+}
+input[type="radio"],
+input[type="submit"],
+select {
+    margin-right: 10px;
+}
