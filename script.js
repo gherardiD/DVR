@@ -32,5 +32,59 @@ function calculate() {
     
     const indiceEspozizione = pesoCarico / kgPesoLimiteRaccomandato;
 
-    console.log(kgPesoLimiteRaccomandato, indiceEspozizione);
+    document.getElementById('pdf-container').style.display = 'flex';
+    document.getElementById('result').innerHTML = indiceEspozizione;
+
 }
+
+function createPDF(){
+    const doc = new jsPDF();
+    doc.text('Risultati del calcolo dei rischi', 10, 10);
+
+    const formData = [];
+
+    const formElements = document.getElementById('calcForm').elements;
+
+    for(let i = 0; i < formElements.length; i++) {
+        const element = formElements[i];
+        
+        if (element.type !== 'submit') {
+            if (element.type === 'radio' && element.checked) {
+                const label = document.querySelector(`label[for="${element.id}"]`);
+                formData.push({
+                    name: element.name,
+                    value: label.textContent.trim()
+                });
+            } else if (element.tagName === 'SELECT') {
+                const selectedOption = element.options[element.selectedIndex];
+                formData.push({
+                    name: element.name,
+                    value: selectedOption.textContent.trim()
+                });
+            } else {
+                formData.push({
+                    name: element.name,
+                    value: element.type === 'radio' || element.type === 'checkbox' ? (element.checked ? element.value : '') : element.value
+                });
+            }
+        }
+    }
+
+    let yPos = 20;
+
+    formData.forEach(data => {
+        if (data.value !== '') {
+            doc.text(data.name + ': ' + data.value, 10, yPos);
+            yPos += 10; 
+        }
+    });
+
+
+    // Display preview
+    const pdfData = doc.output('datauristring');
+    const pdfPreview = document.getElementById('pdf-preview');
+    pdfPreview.innerHTML = '<iframe width="100%" height="500px" src="' + pdfData + '"></iframe>';
+    pdfPreview.style.display = 'block';
+}
+
+

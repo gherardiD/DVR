@@ -27,11 +27,9 @@ label {
     font-weight: bold;
     color: #555;
     margin-bottom: 5px;
-    /* display: block; */
 }
 
-input[type="radio"],
-input[type="checkbox"] {
+input[type="radio"] {
     margin-right: 10px;
     appearance: none;
     -webkit-appearance: none;
@@ -44,14 +42,12 @@ input[type="checkbox"] {
     cursor: pointer;
 }
 
-input[type="radio"]:checked,
-input[type="checkbox"]:checked {
+input[type="radio"]:checked {
     background-color: #4CAF50;
     border-color: #4CAF50;
 }
 
-input[type="radio"]:hover,
-input[type="checkbox"]:hover {
+input[type="radio"]:hover {
     background-color: #e7e7e7;
 }
 
@@ -60,7 +56,7 @@ input[type="number"],
 select {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     border-radius: 5px;
     outline: none;
     transition: border-color 0.3s;
@@ -86,5 +82,52 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #2b772f;
+}
+
+.pdf-container {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.result-container{
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.result-container button{
+    padding: 12px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    max-width: fit-content;
+    margin: 20px auto 0;
+}
+
+.result-container button:hover {
+    background-color: #2b772f;
+}
+
+.pdf-preview{
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.pdfFrame{
+    width: 100%;
+    height: 100%;
+    border: none;
 }
